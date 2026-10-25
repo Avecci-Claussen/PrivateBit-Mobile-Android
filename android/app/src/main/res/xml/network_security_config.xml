@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Why cleartext is permitted here at all: you can point PrivateBit at your own Bitcoin node on
+  your home network (for example http://192.168.1.20:8332), and Android's config cannot list
+  "any private address". So the rule is enforced in code instead:
+   - All app traffic goes through NativeHttpPlugin, which refuses http unless every address of
+     the host is loopback, private (RFC 1918, fc00::/7, 100.64.0.0/10) or link-local.
+   - The wallet screen's Content Security Policy allows no outside connections at all.
+   - The site browser only loads https pages (http only for local hosts) and blocks mixed content.
+  Only the system certificate store is trusted; user-added certificates are not.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>

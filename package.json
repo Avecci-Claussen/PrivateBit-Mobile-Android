@@ -1,0 +1,37 @@
+{
+  "name": "privatebit-android",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "PrivateBit for Android. Same wallet core as the extension (shared/src), wrapped with Capacitor.",
+  "scripts": {
+    "build:web": "tsc --noEmit -p tsconfig.json && vite build && node shared/scripts/check-dist.mjs www",
+    "build:web:e2e": "vite build --mode e2e --outDir www-e2e",
+    "sync": "cap sync android",
+    "test": "vitest run"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.5.3",
+    "@capacitor/app": "^8.1.2",
+    "@capacitor/core": "^8.5.3",
+    "jsqr": "^1.4.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@capacitor/cli": "^8.5.3",
+    "@types/chrome": "^0.0.287",
+    "@types/node": "^20.19.43",
+    "esbuild": "^0.25.12",
+    "happy-dom": "^21.0.4",
+    "playwright": "^1.58.2",
+    "typescript": "^5.9.3",
+    "vite": "^6.4.5",
+    "vitest": "^4.1.12"
+  },
+  "overrides": {
+    "uuid": "^11.1.1"
+  }
+}

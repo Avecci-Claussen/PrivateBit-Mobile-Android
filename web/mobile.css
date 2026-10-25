@@ -1,0 +1,61 @@
+/* Phone and tablet layout for the shared screens. */
+:root{
+  --sat: var(--safe-area-inset-top, env(safe-area-inset-top, 0px));
+  --sab: var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px));
+  --sal: var(--safe-area-inset-left, env(safe-area-inset-left, 0px));
+  --sar: var(--safe-area-inset-right, env(safe-area-inset-right, 0px));
+  -webkit-tap-highlight-color: transparent;
+}
+html,body{height:100%;overscroll-behavior:none}
+body.mobile{-webkit-text-size-adjust:100%;touch-action:manipulation}
+.popup-body.mobile{width:100%;height:100dvh;overflow:hidden}
+.popup-body.mobile #app{width:100%;height:100dvh}
+.popup-body.mobile .popup{width:100%;height:100dvh;padding:var(--sat) var(--sar) 0 var(--sal);box-sizing:border-box}
+.popup-body.mobile .popup .tabs{padding-bottom:var(--sab)}
+.popup-body.mobile .popup .foot:last-child{padding-bottom:calc(var(--s-4, 16px) + var(--sab))}
+.popup-body.mobile .solo .pb-expand{width:100%;border:0;border-radius:0;box-shadow:none}
+.popup-body.mobile .pb-expand .popup{min-height:100dvh}
+.full-body.mobile{min-height:100dvh;padding:var(--sat) var(--sar) var(--sab) var(--sal);box-sizing:border-box}
+/* Touch targets: 48 dp for everything you tap (Material). */
+body.mobile .btn{min-height:48px}
+body.mobile .btn-sm{min-height:48px}
+body.mobile .icon-btn{min-width:48px;min-height:48px}
+body.mobile .tab{min-height:56px}
+body.mobile .li,body.mobile .rowlink,body.mobile .opt{min-height:56px}
+body.mobile .input,body.mobile .textarea{font-size:max(16px, calc(14px * var(--fs)))}
+body.mobile .link.small{padding:10px 4px;margin:-10px -4px}
+/* No desktop only controls. */
+body.mobile [data-act="open-full"]{display:none}
+.scan-btn{margin-bottom:var(--s-2,8px)}
+/* QR scanner */
+.pb-scanner{position:fixed;inset:0;z-index:1000;background:#000;display:grid;grid-template-rows:1fr auto}
+.pb-scanner video{width:100%;height:100%;object-fit:cover;grid-row:1/3;grid-column:1}
+.pb-scan-frame{grid-row:1;grid-column:1;align-self:center;justify-self:center;width:min(70vw,320px);aspect-ratio:1;border:3px solid var(--c-primary);border-radius:20px;box-shadow:0 0 0 100vmax rgba(0,0,0,.45)}
+.pb-scan-bar{grid-row:2;grid-column:1;position:relative;padding:16px 16px calc(16px + var(--sab));background:var(--c-bg);display:flex;flex-direction:column;gap:12px}
+.pb-scan-msg{margin:0;color:var(--c-fg);font:var(--t-body, 15px/22px system-ui)}
+/* Header chips look 40 dp tall; their touch area is 48 dp (the header is 56 dp). */
+body.mobile .hdr{height:auto;min-height:56px}
+body.mobile .wchip,body.mobile .pstat,body.mobile button.net{height:auto;min-height:40px;position:relative}
+body.mobile .wchip::before,body.mobile .pstat::before,body.mobile button.net::before{content:"";position:absolute;inset:-4px 0}
+body.mobile .seg button,body.mobile button[role=radio]{height:auto;min-height:48px}
+body.mobile label.check{min-height:48px;display:flex;align-items:center;gap:10px}
+body.mobile .subnav a{min-height:48px;display:flex;align-items:center}
+body.mobile .link.small{min-height:48px}
+body.mobile .tab{min-height:56px}
+/* Keyboard up: the bottom tabs step aside so the field and its button stay in view. */
+body.mobile.kb-open .tabs{display:none}
+/* Sheets and toasts clear the gesture bar; a sheet never covers the status bar. */
+.popup-body.mobile .sheet{padding-bottom:calc(var(--s-4, 16px) + var(--sab));max-height:calc(100dvh - var(--sat) - 48px)}
+.popup-body.mobile .toast{bottom:calc(72px + var(--sab))}
+/* Lists scroll with the platform stretch, the page itself does not bounce. */
+body.mobile .main{overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch}
+/* Switches at Material size; their text label toggles them too. */
+body.mobile .switch{width:52px;height:32px;border-radius:16px}
+body.mobile .switch::after{top:4px;left:4px;width:24px;height:24px}
+body.mobile .switch:checked::after{transform:translateX(20px)}
+body.mobile .pick button{height:auto;min-height:48px}
+/* Short screens: the unlock pattern is decoration; the password field comes first. */
+@media (max-height:700px){body.mobile .ledger{display:none}}
+
+/* Fingerprint or face unlock notes and offer card */
+body.mobile .bio-offer{gap:12px}

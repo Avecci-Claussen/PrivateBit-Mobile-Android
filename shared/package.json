@@ -1,0 +1,39 @@
+{
+  "name": "privatebit",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Private Bitcoin and Fractal Bitcoin wallet with a reusable receive code, Payjoin payment links and keys that stay on your computer.",
+  "scripts": {
+    "build": "tsc --noEmit && vite build && node scripts/check-dist.mjs dist",
+    "build:e2e": "vite build --mode e2e --outDir dist-e2e",
+    "build:private": "tsc --noEmit && vite build --mode private --outDir dist-private",
+    "check:dist": "node scripts/check-dist.mjs dist",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "directory": "node --experimental-strip-types directory/server.ts",
+    "release": "npm run build && node scripts/pack-release.mjs dist release/PrivateBit-v1.0.0.zip",
+    "prerelease": "node -e \"require('fs').mkdirSync('release',{recursive:true})\""
+  },
+  "dependencies": {
+    "@noble/ciphers": "^1.3.0",
+    "@noble/curves": "^1.9.7",
+    "@noble/hashes": "^1.8.0",
+    "@scure/base": "^1.2.6",
+    "@scure/bip32": "^1.7.0",
+    "@scure/bip39": "^1.6.0",
+    "@scure/btc-signer": "^1.8.1",
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.287",
+    "@types/node": "^22.20.5",
+    "@types/qrcode": "^1.5.6",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vitest": "^4.1.12"
+  },
+  "engines": {
+    "node": ">=20.19"
+  }
+}

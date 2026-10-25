@@ -1,0 +1,14 @@
+node_modules/
+dist/
+*.log
+.DS_Store
+.env
+.env.local
+.env.*.local
+secrets.local.ts
+dist-e2e/
+dist-private/
+PrivateBit-PRIVATE*
+scratch/
+release/
+e2e-out/
