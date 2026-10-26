@@ -1,3 +1,6 @@
+<img width="2048" height="395" alt="lockup-dark-2048" src="https://github.com/user-attachments/assets/30e778ea-e5f4-4bff-9692-f71b5e9e4457" />
+
+
 # PrivateBit 1.0.0
 
 Private Bitcoin and Fractal Bitcoin wallet. One receive code, keys that stay on the device, and Payjoin between two PrivateBit users. The Chrome extension and the Android app run the same TypeScript.
