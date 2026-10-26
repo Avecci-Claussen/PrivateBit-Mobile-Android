@@ -22,7 +22,8 @@ describe("Android shell: wallet over the shim", () => {
     expect(st.data.hasVault).toBe(false);
     const ob = await send({ type: "NEW_MNEMONIC" });
     expect(words(ob.data.mnemonic)).toHaveLength(24);
-    const made = await send({ type: "CREATE_CHECKED", password: "correct horse battery", name: "Phone test" });
+    const checks = [0, 8, 16].map((index) => ({ index, word: words(ob.data.mnemonic)[index] }));
+    const made = await send({ type: "CREATE_CHECKED", password: "correct horse battery", name: "Phone test", checks });
     expect(made.ok, made.error).toBe(true);
     const s2 = await send({ type: "STATE" });
     expect(s2.data.unlocked).toBe(true);

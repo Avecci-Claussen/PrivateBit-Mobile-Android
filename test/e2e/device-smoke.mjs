@@ -115,7 +115,9 @@ async function main() {
   const block = win.split(/Window #\d+/).find((b) => b.includes(PKG) && b.includes("mHasSurface=true")) ?? "";
   ok("FLAG_SECURE while recovery words are shown", /fl=[^\n]*SECURE/.test(block), (block.match(/fl=[^\n]*/) ?? [""])[0]);
   screencap("02-seed-screencap-secure");
-  await send({ type: "CREATE_CHECKED", password: PW, name: "Emulator wallet" });
+  const ob = await send({ type: "ONBOARD_GET" });
+  const ws = String(ob.data?.mnemonic ?? "").split(/\s+/);
+  await send({ type: "CREATE_CHECKED", password: PW, name: "Emulator wallet", checks: [0, 8, 16].map((index) => ({ index, word: ws[index] })) });
   await ev(`location.reload();`).catch(() => undefined);
   await sleep(8000);
   await waitFor(`document.querySelector("#app")?.children.length > 0`);

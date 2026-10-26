@@ -39,4 +39,4 @@ A private test build can compile a data-service key into the app. Set `UNISAT_AP
 
 ## License
 
-No license has been chosen yet. Until a `LICENSE` file is added, all rights are reserved by the authors. Do not make this repository public before that file exists. Third-party licenses for the bundled fonts and icons are in `shared/public/licenses/`.
+MIT. See [LICENSE](LICENSE). Third-party licenses for the bundled fonts and icons are in `shared/public/licenses/`.
